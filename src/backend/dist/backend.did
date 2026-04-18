@@ -1,0 +1,62 @@
+type UserId = principal;
+type Timestamp = int;
+type RecordId = nat;
+type ProfileView = 
+ record {
+   dateOfBirth: text;
+   email: text;
+   emergencyContactName: text;
+   emergencyContactPhone: text;
+   name: text;
+   updatedAt: Timestamp;
+   userId: UserId;
+ };
+type ProfileInput = 
+ record {
+   dateOfBirth: text;
+   email: text;
+   emergencyContactName: text;
+   emergencyContactPhone: text;
+   name: text;
+ };
+type MedicalRecordInput = 
+ record {
+   doctorName: text;
+   fileKey: text;
+   fileName: text;
+   fileSize: nat;
+   fileType: FileType;
+   hospitalName: text;
+   notes: opt text;
+   visitDate: text;
+ };
+type MedicalRecord = 
+ record {
+   doctorName: text;
+   fileKey: text;
+   fileName: text;
+   fileSize: nat;
+   fileType: FileType;
+   hospitalName: text;
+   id: RecordId;
+   notes: opt text;
+   uploadedAt: Timestamp;
+   visitDate: text;
+ };
+type FileType = 
+ variant {
+   DoctorNote;
+   Insurance;
+   Other;
+   Prescription;
+   TestReport;
+   Xray;
+ };
+service : {
+  createMedicalRecord: (input: MedicalRecordInput) -> (MedicalRecord);
+  deleteMedicalRecord: (recordId: RecordId) -> (bool);
+  getMyProfile: () -> (opt ProfileView);
+  getMyRecord: (recordId: RecordId) -> (opt MedicalRecord);
+  listMyRecords: () -> (vec MedicalRecord);
+  upsertMyProfile: (input: ProfileInput) -> (ProfileView);
+}

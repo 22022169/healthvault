@@ -1,0 +1,24 @@
+{
+  "overview": "HealthVault is a secure patient medical records platform where patients can store, organize, and search all their medical documents from different doctors and hospitals in one place. Features a professional blue/white/green design with dark mode support.",
+  "features": [
+    "Secure signup and login with Internet Identity",
+    "Dashboard with personal details and recent records",
+    "Upload medical documents (PDF, images, DOCX) with drag-and-drop",
+    "Organize records by doctor, hospital, visit date, and document type",
+    "Keyword search and filter across all records",
+    "Timeline view of complete medical history",
+    "Dark mode and light mode toggle",
+    "Fully responsive mobile and desktop layout"
+  ],
+  "category": "healthcare-productivity",
+  "tags": [
+    "healthcare",
+    "medical-records",
+    "patient-portal",
+    "document-management",
+    "secure-storage",
+    "dark-mode",
+    "responsive"
+  ],
+  "last_updated": "2026-04-18T14:17:53.801Z"
+}

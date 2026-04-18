@@ -1,0 +1,65 @@
+// Version: 1.0.0
+type Data__791452850<K, V> =
+  {var count : Nat__490723111; kvs : [var ?(K, V)]};
+type FileType__929325727 =
+  {#DoctorNote; #Insurance; #Other; #Prescription; #TestReport; #Xray};
+type Internal__8484328<K, V> =
+  {children : [var ?Node__46230540<K, V>]; data : Data__791452850<K, V>};
+type Leaf__809889148<K, V> = {data : Data__791452850<K, V>};
+type List__415060402<T> = List__790383201<T>;
+type List__790383201<T> =
+  {
+    var blockIndex : Nat__490723111;
+    var blocks : [var [var ?T]];
+    var elementIndex : Nat__490723111
+  };
+type MedicalRecord__524344633 =
+  {
+    doctorName : Text;
+    fileKey : Text;
+    fileName : Text;
+    fileSize : Nat;
+    fileType : FileType__929325727;
+    hospitalName : Text;
+    id : RecordId__900877486;
+    notes : ?Text;
+    uploadedAt : Timestamp__655632124;
+    visitDate : Text
+  };
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type Node__46230540<K, V> =
+  {#internal : Internal__8484328<K, V>; #leaf : Leaf__809889148<K, V>};
+type Profile__901378260 =
+  {
+    var dateOfBirth : Text;
+    var email : Text;
+    var emergencyContactName : Text;
+    var emergencyContactPhone : Text;
+    var name : Text;
+    updatedAt : Timestamp__144199673;
+    userId : UserId__914439993
+  };
+type RecordId__634517021 = Nat;
+type RecordId__900877486 = RecordId__634517021;
+type Timestamp__144199673 = Timestamp__301639476;
+type Timestamp__301639476 = Int;
+type Timestamp__655632124 = Timestamp__301639476;
+type UserId__158757552 = Principal;
+type UserId__19468198 = UserId__158757552;
+type UserId__914439993 = UserId__158757552;
+actor {
+  stable var nextRecordId : Nat;
+  stable profiles :
+    {
+      var root : Node__46230540<UserId__914439993, Profile__901378260>;
+      var size : Nat__490723111
+    };
+  stable recordsMap :
+    {
+      var root :
+        Node__46230540<UserId__19468198,
+                        List__415060402<MedicalRecord__524344633>>;
+      var size : Nat__490723111
+    }
+};
